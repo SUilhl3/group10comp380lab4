@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-const OpenAI = require("openai");
+const { GoogleGenAI } = require("@google/genai");
+// const OpenAI = require("openai");
 
 dotenv.config();
 
@@ -9,9 +10,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const client = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY})
+
+// const client = new OpenAI({
+//   apiKey: process.env.OPENAI_API_KEY,
+// });
 
 app.post("/api/generate", async (req, res) => {
   try {
@@ -32,20 +35,17 @@ Budget: ${budget}
 Interests: ${interests}
 `;
 
-    const response = await client.chat.completions.create({
-      model: "gpt-4.1-mini",
-      messages: [
-        { role: "system", content: systemPrompt },
-        { role: "user", content: userPrompt },
-      ],
+    const response = await client.models.generateContent({
+      model: "gemini-3-flash-preview",
+      contents: userPrompt
     });
 
     res.json({
-      result: response.choices[0].message.content,
+      result: response.text,
     });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Something went wrong while generating the itinerary." });
+    res.status(500).json({ error: "Something went wrong while generating the itinerary.", details: error.message });
   }
 });
 
