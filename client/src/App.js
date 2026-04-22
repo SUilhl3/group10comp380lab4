@@ -38,7 +38,9 @@ function App() {
   };
 
   return (
+    
     <div className="container">
+      <div className='bg'>
       <h1>Travel Itinerary Planner</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -81,7 +83,7 @@ function App() {
           <pre>{result}</pre>
         </div>
       )}
-    </div>
+    </div></div>
   );
 }
 

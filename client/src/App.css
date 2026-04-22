@@ -3,6 +3,8 @@
   margin: 40px auto;
   font-family: Arial, sans-serif;
   padding: 20px;
+  color: white;
+  background-image: linear-gradient(to bottom right, #EF798A, #A62639);
 }
 
 form {
@@ -17,6 +19,9 @@ textarea,
 button {
   padding: 10px;
   font-size: 16px;
+  background-color: #62929E;
+  border: 2px solid #C6C5B9;
+  color: white
 }
 
 button {
@@ -26,11 +31,19 @@ button {
 .output {
   margin-top: 25px;
   padding: 15px;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
+  border: 8px solid #C6C5B9;
+  background: #62929E;
 }
 
 pre {
   white-space: pre-wrap;
   word-wrap: break-word;
+}
+h1 {
+  text-align: center;
+  font-family:'Courier New', Courier, monospace;
+}
+h2{
+    text-align: center;
+  font-family:'Courier New', Courier, monospace;
 }
