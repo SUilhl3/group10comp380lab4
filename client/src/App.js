@@ -15,7 +15,7 @@ function App() {
     setResult("");
 
     try {
-      const response = await fetch("http://localhost:5000/api/generate", {
+      const response = await fetch("https://group10comp380lab4.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -38,9 +38,7 @@ function App() {
   };
 
   return (
-    
     <div className="container">
-      <div className='bg'>
       <h1>Travel Itinerary Planner</h1>
       <form onSubmit={handleSubmit}>
         <input
@@ -83,7 +81,7 @@ function App() {
           <pre>{result}</pre>
         </div>
       )}
-    </div></div>
+    </div>
   );
 }
 

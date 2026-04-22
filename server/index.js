@@ -7,7 +7,7 @@ const { GoogleGenAI } = require("@google/genai");
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({origin: "https://group10comp380lab4.vercel.app/"}));
 app.use(express.json());
 
 const client = new GoogleGenAI({apiKey: process.env.GEMINI_API_KEY})
@@ -49,7 +49,7 @@ Interests: ${interests}
   }
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = "https://group10comp380lab4.onrender.com";
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
